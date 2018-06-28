@@ -5,6 +5,7 @@ import java.awt.*;
 public class Player extends CollisionObject  implements Movable {
 
     public Player(int x, int y) {
+
         super(x, y);
     }
 

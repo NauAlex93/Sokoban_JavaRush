@@ -66,10 +66,3 @@ public class Field extends JPanel {
 }
 
 
-
-/*
-14.3. В конструкторе класса Field:
-14.3.1. Создай объект класса KeyHandler.
-14.3.2. Добавь его слушателем с помощью метода addKeyListener().
-14.3.3. Установи focusable в true (метод setFocusable()).
- */
