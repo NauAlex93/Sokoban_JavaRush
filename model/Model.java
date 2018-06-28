@@ -10,7 +10,7 @@ public class Model {
 
    public GameObjects gameObjects;
    public int currentLevel = 1;
-   private LevelLoader levelLoader = new LevelLoader(Paths.get("C:\\Users\\Alexandr1\\Downloads\\JavaRushTasks\\4.JavaCollections\\src\\com\\javarush\\task\\task34\\task3410\\res\\levels.txt"));
+   private LevelLoader levelLoader = new LevelLoader(Paths.get(".\\4.JavaCollections\\src\\com\\javarush\\task\\task34\\task3410\\res\\levels.txt"));
 
    EventListener eventListener;
 
@@ -25,7 +25,6 @@ public class Model {
    }
 
    public void restart() {
-
       restartLevel(currentLevel);
    }
 
@@ -82,40 +81,40 @@ public class Model {
 
       Player player = gameObjects.getPlayer();
 
-      GameObject  stopped = null;
+      // найдем во что уперся игрок
+      GameObject  stoped = null;
       for (GameObject gameObject: gameObjects.getAll()){
          if (!(gameObject instanceof Player)&&!(gameObject instanceof Home) && player.isCollision(gameObject, direction)){
-            stopped = gameObject;
+            stoped = gameObject;
          }
       }
-
-
-      if ((stopped == null)){
+      //свободное место или дом
+      if ((stoped == null)){
          return false;
       }
-      if (stopped instanceof Box){
-         Box stoppedBox = (Box)stopped;
-         if (checkWallCollision(stoppedBox, direction)){
+      if (stoped instanceof Box){
+         Box stopedBox = (Box)stoped;
+         if (checkWallCollision(stopedBox, direction)){
             return true;
          }
          for (Box box : gameObjects.getBoxes()){
-            if(stoppedBox.isCollision(box, direction)){
+            if(stopedBox.isCollision(box, direction)){
                return true;
             }
          }
          switch (direction)
          {
             case LEFT:
-               stoppedBox.move(-FIELD_CELL_SIZE, 0);
+               stopedBox.move(-FIELD_CELL_SIZE, 0);
                break;
             case RIGHT:
-               stoppedBox.move(FIELD_CELL_SIZE, 0);
+               stopedBox.move(FIELD_CELL_SIZE, 0);
                break;
             case UP:
-               stoppedBox.move(0, -FIELD_CELL_SIZE);
+               stopedBox.move(0, -FIELD_CELL_SIZE);
                break;
             case DOWN:
-               stoppedBox.move(0, FIELD_CELL_SIZE);
+               stopedBox.move(0, FIELD_CELL_SIZE);
          }
       }
       return false;
@@ -127,14 +126,14 @@ public class Model {
       boolean yes = true;
 
       for(Home home : gameObjects.getHomes()){
-         boolean current = false;
+         boolean currentyes = false;
 
          for (Box box: gameObjects.getBoxes()){
             if ((box.getX() == home.getX()) && (box.getY() == home.getY()))
-               current = true;
+               currentyes = true;
          }
 
-         if (!current)yes = false;
+         if (!currentyes)yes = false;
       }
 
       if (yes)

@@ -26,23 +26,20 @@ public class View extends JFrame {
     }
 
     public void setEventListener(EventListener eventListener){
-
         field.setEventListener(eventListener);
     }
 
     public void update(){
-
         this.field.repaint();
     }
 
     public GameObjects getGameObjects() {
-
         return controller.getGameObjects();
     }
 
     public void completed(int level){
         this.update();
-        JOptionPane.showMessageDialog(null, "Congratulations! Level " + level + " completed", "Level", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, level + "Completed", "Level", JOptionPane.INFORMATION_MESSAGE);
         controller.startNextLevel();
     }
 }
