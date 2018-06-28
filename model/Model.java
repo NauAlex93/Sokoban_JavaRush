@@ -10,7 +10,7 @@ public class Model {
 
    public GameObjects gameObjects;
    public int currentLevel = 1;
-   private LevelLoader levelLoader = new LevelLoader(Paths.get("C:\\Users\\Alexandr1\\Downloads\\JavaRushTasks\\4.JavaCollections\\src\\com\\javarush\\task\\task34\\task3410\\res\\levels.txt"));
+   private LevelLoader levelLoader = new LevelLoader(Paths.get(".\\4.JavaCollections\\src\\com\\javarush\\task\\task34\\task3410\\res\\levels.txt"));
 
    EventListener eventListener;
 
